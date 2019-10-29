@@ -21,8 +21,15 @@ class SessionController {
     }
 
     req.session.user = user
+    const valueProvider = await User.findOne({
+      where: { email: email }
+    })
 
-    return res.redirect('/app/dashboard')
+    if (valueProvider.provider === true) {
+      return res.redirect(`/app/listServices/${valueProvider.id}`)
+    } else {
+      return res.redirect('/app/dashboard')
+    }
   }
 
   destroy (req, res) {

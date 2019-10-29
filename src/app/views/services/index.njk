@@ -2,18 +2,17 @@
 
 {% block body %}
   <div class="content">
-    <strong>Olá, {{ user.name }}</strong>
-    <p>Inicie um agendamento escolhendo um profissional abaixo:</p>
+    <p>Seus serviços</p>
 
     <ul class="providers">
-      {% for provider in providers %}
+      {% for service in services %}
         <li class="provider">
           <div>
-            <img src="/files/{{ provider.avatar }}"/>
-            <strong>{{provider.name}}
+            <strong>{{service.date}}
+            </strong>
+            <strong>{{service.name}}
             </strong>
           </div>
-          <a href="/app/appointments/new/{{ provider.id }}">+</a>
         </li>
       {% endfor %}
     </ul>
