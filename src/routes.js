@@ -6,6 +6,7 @@ const routes = express.Router()
 
 const authMiddleware = require('./app/middlewares/auth')
 const guestMiddleware = require('./app/middlewares/guest')
+const isProviderMiddleware = require('./app/middlewares/isProvider')
 
 const UserController = require('./app/controllers/UserController')
 const SessionController = require('./app/controllers/SessionController')
@@ -24,7 +25,7 @@ routes.use((req, res, next) => {
 routes.get('/files/:file', FileController.show)
 
 routes.get('/', guestMiddleware, SessionController.create)
-routes.post('/signin', SessionController.store)
+routes.post('/signin', isProviderMiddleware, SessionController.store)
 
 routes.get('/signup', guestMiddleware, UserController.create)
 routes.post('/signup', upload.single('avatar'), UserController.store)
