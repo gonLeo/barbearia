@@ -5,10 +5,9 @@ class ServicesController {
   async index (req, res) {
     const providerId = req.params.provider
     const services = await Appointment.findAll({
-      foreignKey: 'userId',
       include: [{
         model: User,
-        attributes: ['id']
+        as: 'user'
       }],
       where: {
         providerId: providerId,

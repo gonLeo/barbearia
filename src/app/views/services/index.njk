@@ -8,9 +8,14 @@
       {% for service in services %}
         <li class="provider">
           <div>
-            <strong>{{service.date}}
+            <img src="/files/{{ service.user.avatar }}"/>
+            <strong>{{provider.name}}
             </strong>
-            <strong>{{service.User.name}}
+          </div>
+          <div>
+            <strong>{{service.user.name}}
+            </strong>
+            <strong>{{service.date}}
             </strong>
           </div>
         </li>
